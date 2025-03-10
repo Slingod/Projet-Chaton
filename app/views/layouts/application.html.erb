@@ -23,22 +23,35 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <!-- L'utilisateur est connecté, afficher un bouton de déconnexion -->
-      <div>
-        <p>Bienvenue, <%= current_user.email %>!</p>
-        <%= form_with url: destroy_user_session_path, method: :delete, style: "display:inline;" do %>
-          <%= submit_tag 'Déconnexion' %>
-        <% end %>
-      </div>
-    <% else %>
-      <!-- L'utilisateur n'est pas connecté, afficher les boutons S'inscrire et Se connecter -->
-      <div>
-        <%= link_to 'S\'inscrire', new_user_registration_path %> |
-        <%= link_to 'Se connecter', new_user_session_path %>
-      </div>
+  <% if user_signed_in? %>
+  <!-- L'utilisateur est connecté, afficher un bouton de déconnexion -->
+  <div>
+    <p>Bienvenue, <%= current_user.email %>!</p>
+    <%= form_with url: destroy_user_session_path, method: :delete, style: "display:inline;" do %>
+      <%= submit_tag 'Déconnexion' %>
     <% end %>
+  </div>
+<% end %>
 
-    <%= yield %> <!-- Cela va afficher le contenu de chaque vue spécifique -->
+<!-- Liens de navigation -->
+<ul>
+  <li><%= link_to 'Contactez-nous', contact_path %></li>
+  
+  <% unless user_signed_in? %>
+    <li><%= link_to 'Inscription', signup_path %></li>
+    <li><%= link_to 'Connexion', login_path %></li>
+  <% end %>
+  
+  <li><%= link_to 'Boutique', shop_path %></li>
+
+  <% if user_signed_in? && current_user.admin? %>
+    <li><%= link_to 'Admin', admin_path %></li>
+  <% end %>
+</ul>
+
+
+
+<%= yield %> <!-- Affichage du contenu de chaque vue spécifique -->
+
   </body>
 </html>
