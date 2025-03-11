@@ -1,14 +1,16 @@
 @import "bootstrap";
-
 /*
  *= require_self
  *= require_tree .
+ *= require app
+ *= <%= stylesheet_link_tag 'app', media: 'all', 'data-turbo-track': 'reload' %>
  */
 
-/* ========================================================================== 
-   🌍 GLOBAL STYLES 
+/* ==========================================================================
+   Global Styles
    ========================================================================== */
 
+/* Global style for the page body */
 body {
   font-family: 'Arial', sans-serif;
   background-image: linear-gradient(90deg, #33b6e2da, #5e62b0d3, #dc307ddc);
@@ -24,120 +26,162 @@ html, body {
   height: 100%;
 }
 
+/* General container styles */
 .container {
   flex: 1;
   padding: 20px;
 }
 
-/* ========================================================================== 
-   🔝 NAVIGATION BAR 
+/* ==========================================================================
+   Navigation Bar Styles
    ========================================================================== */
 
+/* Styles for the navigation bar */
 .navbar {
+  background-color: rgba(63, 110, 96, 0.6); /* Semi-transparent background color */
+  padding: 10px 0;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background: linear-gradient(to right, #4b6cb7, #182848);
+  justify-content: space-between; /* Space between brand and nav items */
+  align-items: center; /* Center items vertically */
 }
 
-.navbar-brand {
-  color: #ffffff;
-  font-size: 18px;
-  text-decoration: none;
-}
-
-.navbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
+/* Styles for the navbar brand and links */
+.navbar-brand,
 .navbar-nav .nav-link {
   color: #ffffff;
-  text-decoration: none;
   font-size: 16px;
-  transition: color 0.3s;
 }
 
 .navbar-nav .nav-link:hover {
   color: #f8f9fa;
 }
 
-.nav-buttons {
+/* Align navbar items to the center */
+.navbar .navbar-collapse {
+  justify-content: center;
+}
+
+/* Ensure navbar items are aligned properly */
+.navbar .navbar-nav {
+  list-style: none;
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 50px; /* Adds spacing between items */
 }
 
-.nav-buttons .btn {
-  display: inline-block;
-  padding: 8px 15px;
+/* Navbar buttons styling */
+.navbar .btn {
+  padding: 8px 16px;
+  font-size: 14px;
   border-radius: 5px;
-  background-color: #007bff;
-  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Remove underline from links and buttons */
+.navbar-link,
+.btn-primary,
+.btn-danger,
+.card .btn {
   text-decoration: none;
-  transition: background 0.3s;
 }
 
-.nav-buttons .btn:hover {
-  background-color: #0056b3;
+.navbar-link:hover,
+.btn-primary:hover,
+.btn-danger:hover,
+.card .btn:hover {
+  text-decoration: none;
 }
 
-/* ========================================================================== 
-   ⚙️ BUTTON STYLES 
+/* Additional spacing for specific nav items */
+.navbar-nav .nav-item:last-child,
+.navbar-nav .nav-item:nth-last-child(2) {
+  margin-left: 30px; /* Add extra space to the left for these items */
+}
+
+/* Style for the brand */
+.navbar-brand {
+  flex: 1; /* Allow the brand to take available space */
+  text-align: left; /* Align brand text to the left */
+}
+
+/* ==========================================================================
+   Footer Styles
    ========================================================================== */
 
-   .nav-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espacement entre les boutons */
-  }
-  
-  .nav-buttons .btn {
-    min-width: 120px;
-    padding: 10px 15px;
-    text-align: center;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .nav-buttons .btn-danger {
-    background-color: #dc3545;
-  }
-  
-  .nav-buttons .btn:hover {
-    opacity: 0.8;
-  }
-  
-
-.btn-primary {
-  background-image: linear-gradient(90deg, #33b7e2, #5e62b0, #dc307c);
-  color: #ffffff;
+/* Footer always stays at the bottom */
+.footer {
+  margin-top: auto;
+  padding: 10px 0;
+  background-color: rgba(63, 110, 96, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
 }
 
-.btn-primary:hover {
+/* Footer button container */
+.footer .btn-container {
+  display: flex;
+  justify-content: center; /* Center all buttons */
+  gap: 40px; /* Increase spacing between buttons */
+  margin-bottom: 10px;
+}
+
+/* Style for footer buttons */
+.footer .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #007bff; /* Blue background for buttons */
+  border: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+/* Remove margin-right from first child (not needed anymore) */
+.footer .btn-container .btn:first-child {
+  margin-right: 0;
+}
+
+.footer .btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Style for the Facebook logo inside the button */
+.footer .facebook-logo {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* ==========================================================================
+   Button Styles
+   ========================================================================== */
+
+.btn-primary,
+.btn-danger {
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-image: linear-gradient(90deg, #33b7e2, #5e62b0, #dc307c);
+  border: none;
+  color: #ffffff;
+  transition: background-image 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
   background-image: linear-gradient(90deg, #5e62b0, #dc307c, #33b7e2);
 }
 
-.btn-danger {
-  background-color: #dc3545;
-  color: #ffffff;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-}
-
-/* ========================================================================== 
-   📌 FORM STYLES 
+/* ==========================================================================
+   Form Styles
    ========================================================================== */
 
+/* Forms and inputs */
 form {
   max-width: 600px;
   margin: 20px auto;
@@ -162,121 +206,141 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-/* ========================================================================== 
-   📢 FLASH MESSAGES 
+/* ==========================================================================
+   Headings Styles
    ========================================================================== */
 
+/* Header Styles */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+/* Style for the logo image */
+.header-logo {
+  width: 50px; /* Adjust the width as needed */
+  height: auto;
+}
+
+/* Style for the navbar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the navbar content */
+  align-items: center; /* Center items vertically */
+}
+
+.navbar-collapse {
+  flex-grow: 1; /* Allow the collapse element to grow and center its content */
+  display: flex;
+  justify-content: center; /* Center the nav items */
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 10px; /* Add space between nav items */
+}
+
+/* ==========================================================================
+   Flash Message Styles
+   ========================================================================== */
+
+/* Styles for flash messages */
 .alert {
   margin-top: 20px;
   padding: 15px;
   border-radius: 5px;
 }
 
+/* Success alert message */
 .alert-success {
   background-color: #d4edda;
   border-color: #c3e6cb;
   color: #155724;
 }
 
+/* Error alert message */
 .alert-danger {
   background-color: #f8d7da;
   border-color: #f5c6cb;
   color: #721c24;
 }
 
-/* ========================================================================== 
-   📌 FOOTER STYLES 
+/* ==========================================================================
+   Card Styles
    ========================================================================== */
 
-.footer {
-  margin-top: auto;
-  padding: 10px 0;
-  background-color: rgba(63, 110, 96, 0.8);
-  text-align: center;
-}
-
-.footer .btn-container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 10px;
-}
-
-.footer .btn {
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #ffffff;
-  transition: background-color 0.3s;
-}
-
-.footer .btn:hover {
-  background-color: #0056b3;
-}
-
-/* ========================================================================== 
-   🏷️ CARD STYLES 
-   ========================================================================== */
-
+/* Container for cards */
 .card-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  flex-wrap: wrap; /* Allows wrapping to the next row */
+  justify-content: space-between; /* Distributes space between cards */
+  gap: 20px; /* Adds space between cards */
 }
 
+/* Styles for cards */
 .card {
-  flex: 1 1 calc(20% - 20px);
-  max-width: calc(20% - 20px);
-  transition: transform 0.3s;
+  flex: 1 1 calc(20% - 20px); /* 5 cards per row with spacing */
+  max-width: calc(20% - 20px); /* Ensures max width per card */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
   border: 1px solid #e9ecef;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   color: #343a40;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  overflow: hidden;
+  overflow: hidden; /* Ensures content does not overflow */
 }
 
+/* Hover effect for cards */
 .card:hover {
-  transform: translateY(-5px) scale(1.05);
+  transform: translateY(-5px) scale(1.05); /* Combines both hover effects */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Styles for card body */
 .card-body {
   padding: 20px;
 }
 
-/* Responsive Cards */
+/* Responsive behavior */
 @media (max-width: 1200px) {
   .card {
-    flex: 1 1 calc(33.33% - 20px);
+    flex: 1 1 calc(33.33% - 20px); /* 3 cards per row on smaller screens */
     max-width: calc(33.33% - 20px);
   }
 }
 
 @media (max-width: 768px) {
   .card {
-    flex: 1 1 calc(50% - 20px);
+    flex: 1 1 calc(50% - 20px); /* 2 cards per row on tablets */
     max-width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 480px) {
   .card {
-    flex: 1 1 100%;
+    flex: 1 1 100%; /* 1 card per row on small screens */
     max-width: 100%;
   }
 }
 
-/* ========================================================================== 
-   🖼️ PHOTO GALLERY 
-   ========================================================================== */
+.event-photo {
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin: 5px;
+  display: block;
+}
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr); /* 5 photos per lines */
   gap: 10px;
   margin-top: 20px;
 }
@@ -286,4 +350,56 @@ input[type="submit"] {
   height: auto;
   border-radius: 8px;
   object-fit: cover;
+}
+
+/* ==========================================================================
+   Year and Month Menu Styles
+   ========================================================================== */
+
+/* Styles for year and month menus */
+.year-menu ul {
+  display: flex;
+  justify-content: center; /* Centers the items */
+  gap: 250px; /* Spreads the buttons */
+  padding: 0;
+}
+
+.year-item {
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+}
+
+.month-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+.month-menu li {
+  display: block;
+}
+
+.month-menu a {
+  text-decoration: none;
+  color: #007bff;
+  padding: 5px 10px;
+  display: block;
+}
+
+.month-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+/* ==========================================================================
+   Facebook Logo Styles
+   ========================================================================== */
+
+/* Styles for the Facebook logo */
+.facebook-logo {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
 }

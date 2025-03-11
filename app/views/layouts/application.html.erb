@@ -18,8 +18,9 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
   </head>
 
   <body>
@@ -38,7 +39,7 @@
           <%= link_to 'Boutique', shop_path, class: 'btn' %>
           
           <% if current_user.admin? %>
-            <%= link_to 'Admin', admin_path, class: 'btn' %>
+            <%= link_to 'Admin', admin_root_path, class: 'btn' %>
           <% end %>
 
           <%= button_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>

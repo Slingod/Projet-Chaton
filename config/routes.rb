@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   # Route pour la page "Boutique"
   get "shop", to: "home#shop", as: :shop
 
-  # Route pour la page "Admin"
-  get "admin", to: "home#admin", as: :admin
+  # Routes Admin
+  namespace :admin do
+    root to: "dashboard#index"  # Remplace l'ancienne route admin
+    resources :users
+  end
 end
