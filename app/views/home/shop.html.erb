@@ -1,2 +1,23 @@
-<h1>Boutique</h1>
-<p>Bienvenue dans notre boutique !</p>
+<!-- app/views/home/shop.html.erb -->
+
+<div class="container mt-5">
+  <!-- Lien pour ajouter un nouveau chat -->
+  <div class="mb-3">
+    
+  </div>
+
+  <div class="card-wrapper">
+    <% @picture.each do |picture| %>
+      <div class="card">
+        <img src="<%= picture.image %>" class="card-img" alt="<%= picture.name %>">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to picture.name, shop_path(picture), class: "text-decoration-none" %>
+          </h5>
+          <p class="card-text"><strong>Âge :</strong> <%= picture.age %> ans</p>
+          <p class="card-text"><strong>Race :</strong> <%= picture.breed %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

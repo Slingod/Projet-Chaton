@@ -1,0 +1,13 @@
+<!-- app/views/home/show.html.erb -->
+<div class="card shadow-lg" style="width: 50rem;">
+  <img src="<%= @picture.image %>" class="card-img-top" alt="<%= @picture.name %>">
+  <div class="card-body">
+    <h1 class="card-title text-center"><%= @picture.name %></h1>
+    <p class="card-text"><strong>Âge :</strong> <%= @picture.age %> ans</p>
+    <p class="card-text"><strong>Race :</strong> <%= @picture.breed %></p>
+    <p class="card-text"><strong>Description :</strong> <%= @picture.description %></p> <!-- Si tu veux ajouter une description -->
+    <div class="text-center">
+      <%= link_to 'Retour à la boutique', shop_path, class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+</div>
