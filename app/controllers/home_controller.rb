@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   end
 
   def shop
-    @picture = Picture.all  # Récupère tous les chatons
+    @pictures = Picture.all  # Récupère tous les chatons
   end
 
   def show
