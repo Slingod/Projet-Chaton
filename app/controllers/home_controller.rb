@@ -1,17 +1,19 @@
+# app/controllers/home_controller.rb
 class HomeController < ApplicationController
-  # Action pour la page d'accueil
   def index
   end
 
-  # Action pour la page Contactez-nous
   def contact
   end
 
-  # Action pour la page Boutique
   def shop
+    @pictures = Picture.all  # Récupère tous les chatons
   end
 
-  # Action pour la page Admin
+  def show
+    @picture = Picture.find(params[:id])  # Récupère le chaton par son ID
+  end
+
   def admin
   end
 end
