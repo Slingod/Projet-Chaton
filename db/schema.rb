@@ -39,6 +39,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_12_101259) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.datetime "start_date"
+    t.integer "duration"
+    t.decimal "price"
+    t.string "location"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "pictures", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -65,4 +77,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_12_101259) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "events", "users"
 end

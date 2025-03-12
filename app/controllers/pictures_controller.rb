@@ -52,7 +52,3 @@ class PicturesController < ApplicationController
     params.require(:picture).permit(:name, :age, :breed, :image)
   end
 end
-
- 
-
- 
