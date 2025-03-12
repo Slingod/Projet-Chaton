@@ -1,13 +1,17 @@
-<!-- app/views/home/show.html.erb -->
-<div class="card shadow-lg" style="width: 50rem;">
-  <img src="<%= @picture.image %>" class="card-img-top" alt="<%= @picture.name %>">
-  <div class="card-body">
-    <h1 class="card-title text-center"><%= @picture.name %></h1>
-    <p class="card-text"><strong>Âge :</strong> <%= @picture.age %> ans</p>
-    <p class="card-text"><strong>Race :</strong> <%= @picture.breed %></p>
-    
-    <div class="text-center">
-      <%= link_to 'Retour à la boutique', shop_path, class: "btn btn-primary mt-3" %>
-    </div>
+<h1 class="text-center"><%= @picture.name %></h1>
+
+<% if @picture.image.attached? %> <!-- Vérifie si une image est attachée -->
+  <div class="photo-item">
+    <%= image_tag @picture.image.variant(resize_to_limit: [300, 300]).processed, class: "mx-auto d-block", alt: @picture.name, style: "max-width: 300px; height: auto;" %>
   </div>
+<% else %>
+  <p>Aucune image attachée.</p>
+  <%= image_tag 'default_image.jpg', class: "img-fluid mx-auto d-block", alt: "Image par défaut" %>
+<% end %>
+
+<p><strong>Age:</strong> <%= @picture.age %></p>
+<p><strong>Breed:</strong> <%= @picture.breed %></p>
+
+<div class="text-center mt-3">
+  <%= link_to 'Edit', edit_picture_path(@picture), class: 'btn btn-warning' %> |
 </div>
