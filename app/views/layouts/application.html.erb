@@ -28,7 +28,7 @@
     <nav class="navbar">
       <div class="welcome-message">
         <% if user_signed_in? %>
-          <p>Bienvenue, <%= current_user.email %>!</p>
+          <p>Bienvenue, <%= current_user.pseudo.presence || "Utilisateur" %>!</p>
         <% else %>
           <p>Bienvenue sur notre site !</p>
         <% end %>

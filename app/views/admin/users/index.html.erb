@@ -5,7 +5,7 @@
 <div class="users-container" id="users-list">
   <% @users.each do |user| %>
     <div class="card user-card" id="user-<%= user.id %>" style="border: 1px solid #ddd; padding: 20px; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); width: 250px; text-align: center;">
-      <h2 style="color: #333;"><%= user.email %></h2>
+      <h2 style="color: #333;"><%= user.pseudo.present? ? user.pseudo : user.email %></h2>
       <p><strong>Rôle:</strong> <%= user.admin? ? "Admin" : "Utilisateur" %></p>
       <div class="d-flex justify-content-center gap-2 mt-2">
         <%= link_to admin_user_path(user), class: "btn btn-info btn-sm px-3" do %>

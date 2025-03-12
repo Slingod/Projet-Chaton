@@ -14,12 +14,16 @@ class Admin::UsersController < ApplicationController
     end
 
     def update
-      if @user.update(user_params)
-        redirect_to admin_user_path(@user), notice: "Utilisateur mis à jour avec succès."
+      @user = User.find(params[:id])
+      safe_params = params.require(:user).permit(:email)
+      safe_params[:admin] = params[:user][:admin] if current_user.admin?
+    
+      if @user.update(safe_params)
+        redirect_to admin_users_path, notice: "Utilisateur mis à jour"
       else
         render :edit
       end
-    end
+    end    
 
     def destroy
         @user.destroy
