@@ -49,6 +49,6 @@ class PicturesController < ApplicationController
 
   # Méthode pour définir les paramètres autorisés pour les actions CRUD
   def picture_params
-    params.require(:picture).permit(:name, :age, :breed, :image)
+    params.require(:picture).permit(:name, :age, :breed, :image , :price)
   end
 end
