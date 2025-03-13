@@ -1,6 +1,6 @@
 <h1 class="text-center"><%= @picture.name %></h1>
 
-<% if @picture.image.attached? %> <!-- Vérifie si une image est attachée -->
+<% if @picture.image.attached? %>
   <div class="photo-item">
     <%= image_tag @picture.image.variant(resize_to_limit: [300, 300]).processed, class: "mx-auto d-block", alt: @picture.name, style: "max-width: 300px; height: auto;" %>
   </div>
@@ -15,6 +15,5 @@
 
 <div class="text-center mt-3">
   <%= link_to 'Edit', edit_picture_path(@picture), class: 'btn btn-warning' %> |
-  <!-- Nouveau bouton Achat -->
-  <%= link_to 'Acheter', '#', class: 'btn btn-success btn-lg', style: 'margin-left: 15px;' %>
+  <%= button_to "Acheter", checkout_create_path(total: @picture.price, product_id: @picture.id), class: "btn btn-success btn-lg", data: { turbo: false }, style: 'margin-left: 15px;' %>
 </div>

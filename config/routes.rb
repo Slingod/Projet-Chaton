@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  # Reveals health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Vérifie l'état de santé de l'application
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # Routes pour les ressources "pictures"
   resources :pictures, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   # Route pour la page d'accueil
@@ -27,7 +28,14 @@ Rails.application.routes.draw do
 
   # Routes Admin
   namespace :admin do
-    root to: "dashboard#index"  # Remplace l'ancienne route admin
+    root to: "dashboard#index"  # Route principale pour l'espace admin
     resources :users
+  end
+
+  # Routes pour le processus de paiement avec Stripe
+  scope '/checkout' do
+    post 'create', to: 'checkout#create', as: 'checkout_create'
+    get 'success', to: 'checkout#success', as: 'checkout_success'
+    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
   end
 end
