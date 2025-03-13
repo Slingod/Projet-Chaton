@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   # Reveals health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   get "up" => "rails/health#show", as: :rails_health_check
-  
-  resources :pictures, only: [:index, :show , :new , :create , :edit , :update ,:destroy]
+
+  resources :pictures, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
   # Route pour la page d'accueil
   root "home#index"
 
@@ -17,8 +18,9 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new", as: :login
   end
 
-  # Route pour la page "Contactez-nous"
-  get "contact", to: "home#contact", as: :contact
+  # Routes pour la page "Contactez-nous"
+  get "contact", to: "contacts#new", as: :contact
+  post "contact", to: "contacts#create"
 
   # Route pour la page "Boutique"
   get "shop", to: "home#shop", as: :shop
@@ -29,11 +31,3 @@ Rails.application.routes.draw do
     resources :users
   end
 end
-
-  
-  
-  
-  
- 
-  
-
