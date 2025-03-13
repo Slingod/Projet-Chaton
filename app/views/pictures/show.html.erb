@@ -11,7 +11,10 @@
 
 <p><strong>Age:</strong> <%= @picture.age %></p>
 <p><strong>Breed:</strong> <%= @picture.breed %></p>
+<p><strong>Price:</strong> <%= number_to_currency(@picture.price, format: "%n €", separator: ",", delimiter: " ") %></p>
 
 <div class="text-center mt-3">
   <%= link_to 'Edit', edit_picture_path(@picture), class: 'btn btn-warning' %> |
+  <!-- Nouveau bouton Achat -->
+  <%= link_to 'Acheter', '#', class: 'btn btn-success btn-lg', style: 'margin-left: 15px;' %>
 </div>
